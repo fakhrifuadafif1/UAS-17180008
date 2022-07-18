@@ -1,0 +1,76 @@
+>Instal laravel via composer:
+(kekurangan via composer lebih lama & Lebih banyak kode dibanding via installer):
+composer create-project laravel/laravel (nama folder)
+
+>Instal Laravel via Installer:
+laravel new (nama folder)
+
+>local development server laravel:
+php artisan serve
+http://127.0.0.1:8000
+
+>Instal valet-windows (membuat kongfigurasi pada local server jadi lebih mudah) tidak perlu memakai php artisan serve dan xampp cukup dilakukan 1 kali
+
+composer global require cretueusebiu/valet-windows
+Kongfigurasi Acrylic DNS Proxy Windows 10 
+valet instal
+valet park
+
+>setelah terinstal langsung panggil foldernya di browser dengan akhiran .test contoh:
+project-laravel.test
+
+*Struktur Folder, Routes & MVC View
+
+>Folder
+app\Models tersimpan kode utama dari aplikasi kita.Terdapat folder ModelsVC
+resources Terdapat Folder MViewC
+app\Http terdapat folder MVControllers
+routes terdapat file untuk melakukan routing atau penjaluran
+public tempat menyimpan asset statis kita
+env file untuk menentukan ENVIRONMENT
+
+landing page laravel resources/view
+
+>Blade Tamplate engine
+
+menampilkan data yang diteruskan ke tampilan Blade Anda dengan membungkus variabel dalam kurung kurawal. Misalnya, diberikan rute berikut:
+
+Route::get('/', function () {
+    return view('welcome', ['name' => 'Samantha']);
+});
+
+menampilkan isi dari variabel nama :
+
+Hello, {{ $name }}.
+
+>Extending A layout
+
+mendefinisikan tampilan lain, gunakan perintah @extends Blade untuk menentukan tata letak mana yang harus "ditampilkan" oleh tampilan lain. Tampilan yang memperluas tata letak Blade dapat menyuntikkan konten ke bagian tata letak menggunakan arahan @section. Ingat, seperti yang terlihat pada contoh, konten bagian ini akan ditampilkan dalam tata letak menggunakan @yield:
+
+<!-- resources/views/child.blade.php -->
+ 
+@extends('layouts.app')
+ 
+@section('title', 'Page Title')
+ 
+@section('sidebar')
+    @parent
+ 
+    <p>This is appended to the master sidebar.</p>
+@endsection
+ 
+@section('content')
+    <p>This is my body content.</p>
+@endsection
+
+<!-- resources/views/layouts/main.blade.php -->
+content
+@yield('content', 'Default content')
+content
+
+*Models,Colection & Controler
+ (ORM) di dalam laravel terdapat eloquent dia adalah object-relational  mapper(ORM) yang membuat kita dengan mudah berinteraksi dengan datebase kita. dengan menggunakan eloquent setiap tabel dalam database punya sebuah "model" agar kita dapat berinteraksi, jadi kita dapat dengan mudah memanipulasi tabel menggunakan model mulai dari insert update delete dalam tabelnya.
+
+>Cara membuat model
+ php artisan make:model Flight
+
